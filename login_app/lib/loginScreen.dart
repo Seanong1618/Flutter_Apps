@@ -1,7 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:login_app/successfulLogin.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
 
@@ -19,15 +22,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget> [
-        Text(
-          'Username',
-          style: TextStyle(
-              color: Colors.white,
-              fontSize: 16,
-              fontWeight: FontWeight.bold
-          ),
-        ),
-        SizedBox(height: 10,),
+        SizedBox(height: 15),
         Container(
           alignment: Alignment.centerLeft,
           decoration: BoxDecoration(
@@ -69,14 +64,6 @@ class _LoginScreenState extends State<LoginScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget> [
-        Text(
-          'Password',
-          style: TextStyle(
-              color: Colors.white,
-              fontSize: 16,
-              fontWeight: FontWeight.bold
-          ),
-        ),
         SizedBox(height: 10,),
         Container(
           alignment: Alignment.centerLeft,
@@ -193,6 +180,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
   //Create function for login post api
   Future<void> login(String username, String password) async{
+
     if (!username.isEmpty && !password.isEmpty){
      var response = await http.post(Uri.parse("https://tnbti01.teravibe.com:9955/login/"),
          body:({
@@ -201,7 +189,7 @@ class _LoginScreenState extends State<LoginScreen> {
          }));
      if(response.statusCode==200){
        //successful login
-       print("Successfu Login");
+       print("Successful Login");
        Navigator.push(context, MaterialPageRoute(builder: (context) => successfulLogin()));
      }else{
        print("Invalid Credentials!");
@@ -209,7 +197,7 @@ class _LoginScreenState extends State<LoginScreen> {
          context: context,
          builder: (context) => AlertDialog(
            title: Text("Alert!"),
-           content: Text("Invalid Credentials."),
+           content: Text("Invalid Credentials!"),
            actions: [
              TextButton(
                onPressed: (){
@@ -302,10 +290,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
                         colors: [
-                          Color(0x66fc4e03),
-                          Color(0x99fc4e03),
-                          Color(0xccfc4e03),
-                          Color(0xfffc4e03),
+                          Color(0x6634ebeb),
+                          Color(0x9934ebeb),
+                          Color(0xcc34ebeb),
+                          Color(0xff34ebeb),
                         ]
                     )
                 ),
@@ -318,10 +306,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget> [
-                      Image.asset('assets/loginIcon.png',
-                        height: 150,
+                      Image.asset('assets/Login_Text.png',
+                        height: 70,
                       ),
-
+                      SizedBox(height: 20),
                       buildEmail(),
                       SizedBox(height: 30),
                       buildPassword(),

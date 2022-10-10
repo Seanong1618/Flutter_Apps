@@ -30,6 +30,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   http: 0.13.5
+  fluttertoast: ^8.0.9
   flutter:
     sdk: flutter
 
@@ -75,6 +76,7 @@ flutter:
      - assets/icon.png
      - assets/logIcon.png
      - assets/loginIcon.png
+     - assets/Login_Text.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

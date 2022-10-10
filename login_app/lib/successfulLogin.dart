@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 class successfulLogin extends StatelessWidget {
   const successfulLogin({Key? key}) : super(key: key);
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +24,7 @@ class successfulLogin extends StatelessWidget {
                           fontSize: 35,
                           fontWeight: FontWeight.normal,
                           fontStyle: FontStyle.italic,
-                          color: Colors.red,
+                          color: Colors.black,
                         ),
                       ),
 
